@@ -5,21 +5,21 @@
 domain   = 'example.com'
 
 nodes = [
-  { :hostname => 'ex6proxy',   :ip => '192.168.0.42', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6db',      :ip => '192.168.0.43', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6web1',    :ip => '192.168.0.44', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6web2',    :ip => '192.168.0.45', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6static1', :ip => '192.168.0.46', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6static2', :ip => '192.168.0.47', :box => 'ubuntu/trusty64' },
-  { :hostname => 'ex6cache',   :ip => '192.168.0.48', :box => 'ubuntu/trusty64' },
+  { :hostname => 'lat6proxy',   :ip => '192.168.0.42', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6db',      :ip => '192.168.0.43', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6web1',    :ip => '192.168.0.44', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6web2',    :ip => '192.168.0.45', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6static1', :ip => '192.168.0.46', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6static2', :ip => '192.168.0.47', :box => 'ubuntu/focal64' },
+  { :hostname => 'lat6cache',   :ip => '192.168.0.48', :box => 'ubuntu/focal64' },
 ]
 
 Vagrant.configure("2") do |config|
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
-      nodeconfig.vm.box = "ubuntu/trusty64"
+      nodeconfig.vm.box = "ubuntu/focal64"
       nodeconfig.vm.hostname = node[:hostname] + ".box"
-      nodeconfig.vm.network :private_network, ip: node[:ip]
+      nodeconfig.vm.network "private_network", ip: node[:ip]
 
       memory = node[:ram] ? node[:ram] : 256;
       nodeconfig.vm.provider :virtualbox do |vb|
