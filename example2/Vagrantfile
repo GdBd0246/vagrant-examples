@@ -4,9 +4,9 @@
 # VirtualBox modifyvm docs: http://www.virtualbox.org/manual/ch08.html#vboxmanage-modifyvm
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/trusty64"
-  config.vm.hostname = "trusty64"
-  config.vm.network :private_network, ip: "192.168.0.42"
+  config.vm.box = "ubuntu/focal64"
+  config.vm.hostname = "latihan2"
+  config.vm.network "private_network", ip: "192.168.0.42"
 
   config.vm.provider :virtualbox do |vb|
     vb.customize [
